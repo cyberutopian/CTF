@@ -3,3 +3,14 @@
 读者可能会对自适应解法的正确性有疑惑，padding方法是否会影响flag序号范围？答案是不会的。
 
 Soufflé的symbol table按顺序编号。先插入的字符串序号严格小于后插入的字符串。`GUESS`的推理规则用到了关系`HASH`，而`HASH`用到了关系`FLAG`，因此应当先推理`FLAG`，再推理`HASH`，再推理`GUESS`。当推理`FLAG`时，flag内容已经被插入到symbol table中，padding的插入时间晚于flag的插入时间，因此padding的序号要严格大于flag的序号，padding只会起到防止Soufflé崩溃的作用，而不会影响flag的序号。
+
+
+### 附录：题解内容涉及的文档内容链接
+
+调用外部库函数：https://souffle-lang.github.io/functors
+
+symbol table实现：https://souffle-lang.github.io/implementation#symbols
+
+symbol序号到字符串的转换：https://souffle-lang.github.io/types#type-conversion
+
+`__LINE__`：https://souffle-lang.github.io/program#syntax-without-c-pre-processor
